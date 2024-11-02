@@ -13,7 +13,7 @@ const Remaining = () => {
 
   // Exercise: Create an alert when Remaining is less than 0.
   
-  if (alertType == "alert-danger") {
+  if (alertType === "alert-danger") {
     alert("You have exceeded your budget!");
   }
   

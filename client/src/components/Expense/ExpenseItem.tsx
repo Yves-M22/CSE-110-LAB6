@@ -9,12 +9,12 @@ const ExpenseItem = (currentExpense: Expense) => {
 
   const handleDeleteExpense = (currentExpense: Expense) => {
     // Exercise: Remove expense from expenses context array
-    expenses.setExpenses(expenses.expenses.filter(Expense => currentExpense.name !== Expense.name));
+    expenses.setExpenses(expenses.expenses.filter(Expense => currentExpense.description !== Expense.description));
   };
 
   return (
     <li className="list-group-item d-flex justify-content-between align-items-center">
-      <div data-testId="name">{currentExpense.name}</div>
+      <div data-testId="name">{currentExpense.description}</div>
       <div data-testId="cost">${currentExpense.cost}</div>
       <div>
         <button onClick={() => handleDeleteExpense(currentExpense)}>x</button>

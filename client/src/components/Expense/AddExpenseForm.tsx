@@ -3,13 +3,15 @@ import { AppContext } from "../../context/AppContext"
 
 
 const AddExpenseForm = () => {
+
+    
   // Exercise: Consume the AppContext here
     const expenses= useContext(AppContext);
   // Exercise: Create name and cost to state variables
   
   const initialExpense = {
     id: "",
-    name: "",
+    description: "",
     cost: 0,
   };
 
@@ -17,7 +19,7 @@ const AddExpenseForm = () => {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("name: ", createExpense.name);
+    console.log("name: ", createExpense.description);
     console.log("cost: ", createExpense.cost);
     expenses.setExpenses([createExpense, ...expenses.expenses]);
     setCreateExpense(initialExpense);
@@ -37,7 +39,7 @@ const AddExpenseForm = () => {
             type="text"
             className="form-control"
             id="name"
-            onChange={(event) => setCreateExpense({...createExpense, name: event.target.value})}
+            onChange={(event) => setCreateExpense({...createExpense, description: event.target.value})}
           ></input>
         </div>
         <div className="col-sm">
