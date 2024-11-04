@@ -20,6 +20,19 @@ export function createExpenseServer(req: Request, res: Response, expenses: Expen
 
 export function deleteExpense(req: Request, res: Response, expenses: Expense[]) {
     // TO DO: Implement deleteExpense function
+    const { id, cost, description } = req.params;
+    if(!id){
+        return res.status(400).send({error: "Missing required parameter: id"});
+    }
+    const index = expenses.findIndex(expenses => expenses.id === id);
+    if(index === -1){
+        return res.status(404).send({ error: "Expense not found" });
+    }
+    const [deleted] = expenses.splice(index, 1);
+    res.status(200).send(deleted);
+
+
+
 }
 
 export function getExpenses(req: Request, res: Response, expenses: Expense[]) {
