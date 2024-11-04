@@ -1,10 +1,9 @@
 import React, { useState, useContext } from "react";
 import { AppContext } from "../../context/AppContext"
-
+import { createExpense } from "../../utils/expense-utils";
 
 const AddExpenseForm = () => {
 
-    
   // Exercise: Consume the AppContext here
     const expenses= useContext(AppContext);
   // Exercise: Create name and cost to state variables
@@ -15,16 +14,18 @@ const AddExpenseForm = () => {
     cost: 0,
   };
 
-  const [createExpense,setCreateExpense] = useState(initialExpense);
+  const [createExpense2,setCreateExpense] = useState(initialExpense);
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("name: ", createExpense.description);
-    console.log("cost: ", createExpense.cost);
-    expenses.setExpenses([createExpense, ...expenses.expenses]);
-    setCreateExpense(initialExpense);
-  
+    console.log("name: ", createExpense2.description);
+    console.log("cost: ", createExpense2.cost);
+    setCreateExpense({...createExpense2, id: (expenses.expenses.length + 1).toString()})
+    createExpense(createExpense2);
 
+    expenses.setExpenses([createExpense2, ...expenses.expenses]);
+    setCreateExpense(initialExpense);
+    
     // Exercise: Add add new expense to expenses context array
     
   };
@@ -40,7 +41,7 @@ const AddExpenseForm = () => {
             type="text"
             className="form-control"
             id="name"
-            onChange={(event) => setCreateExpense({...createExpense, description: event.target.value})}
+            onChange={(event) => setCreateExpense({...createExpense2, description: event.target.value})}
           ></input>
         </div>
         <div className="col-sm">
@@ -51,7 +52,7 @@ const AddExpenseForm = () => {
             type="number"
             className="form-control"
             id="cost"
-            onChange={(event) => setCreateExpense({...createExpense, cost: event.target.valueAsNumber})}
+            onChange={(event) => setCreateExpense({...createExpense2, cost: event.target.valueAsNumber})}
           ></input>
         </div>
         <div className="col-sm">
