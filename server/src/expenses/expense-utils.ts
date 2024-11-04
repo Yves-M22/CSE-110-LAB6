@@ -28,8 +28,8 @@ export function deleteExpense(req: Request, res: Response, expenses: Expense[]) 
     if(index === -1){
         return res.status(404).send({ error: "Expense not found" });
     }
-    const [deleted] = expenses.splice(index, 1);
-    res.status(200).send(deleted);
+    expenses.splice(index, 1);
+    res.status(200).send();
 
 }
 

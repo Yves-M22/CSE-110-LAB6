@@ -20,7 +20,7 @@ const ExpenseItem = (currentExpense: Expense) => {
       <div data-testId="name">{currentExpense.description}</div>
       <div data-testId="cost">${currentExpense.cost}</div>
       <div>
-        <button onClick={() => deleteExpense(currentExpense.id)}>x</button>
+        <button onClick={() => handleDeleteExpense(currentExpense)}>x</button>
       </div>
     </li>
   );
