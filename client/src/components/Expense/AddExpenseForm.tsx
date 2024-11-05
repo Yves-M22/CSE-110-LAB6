@@ -18,13 +18,16 @@ const AddExpenseForm = () => {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const code = Math.random();
+    const newExpense = {id : code.toString(), description: createExpense2.description, cost: createExpense2.cost};
     console.log("name: ", createExpense2.description);
     console.log("cost: ", createExpense2.cost);
-    setCreateExpense({...createExpense2, id: (expenses.expenses.length + 1).toString()})
-    createExpense(createExpense2);
+    console.log("id: ", code.toString());
+    createExpense(newExpense);
+    
+    expenses.setExpenses([newExpense, ...expenses.expenses]);
 
-    expenses.setExpenses([createExpense2, ...expenses.expenses]);
-    setCreateExpense(initialExpense);
+
     
     // Exercise: Add add new expense to expenses context array
     

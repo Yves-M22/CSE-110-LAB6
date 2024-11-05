@@ -9,8 +9,8 @@ const Budget = () => {
   const editBudget = (input: number) => {
     console.log("budget: ", input)
     expenses.setBudget(input);
-    console.log("newbudget: ", expenses.budget)
-    updateBudget(expenses.budget);
+    console.log("newbudget: ", input);
+    updateBudget(input);
  }
 
   return (

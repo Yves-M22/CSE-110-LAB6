@@ -25,11 +25,12 @@ export function deleteExpense(req: Request, res: Response, expenses: Expense[]) 
         return res.status(400).send({error: "Missing required parameter: id"});
     }
     const index = expenses.findIndex(expenses => expenses.id === id);
+    console.log(id);
     if(index === -1){
         return res.status(404).send({ error: "Expense not found" });
     }
     expenses.splice(index, 1);
-    res.status(200).send();
+    res.status(204).send();
 
 }
 
